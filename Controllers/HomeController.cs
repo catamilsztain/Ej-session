@@ -18,6 +18,19 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult Registrarse()
+    {
+        return View();
+    }
+
+    public IActionResult Ingreso()
+    {
+        
+        return View();
+    }
+
+
+
     public IActionResult Privacy()
     {
         return View();

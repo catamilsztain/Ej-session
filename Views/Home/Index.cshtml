@@ -1,8 +1,7 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<form action = '@Url.Action("Ingreso","Home")' method = "POST">
+<input type="text" name="NombreUsuario" required/>
+<input type="password" name="Contraseña" required/>
+</form>
+<form action = '@Url.Action("Registrarse","Home")' method = "POST">
+<button>Registrarse</button>
+</form>

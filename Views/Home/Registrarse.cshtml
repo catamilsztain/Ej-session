@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form action = '@Url.Action("","")' method = "POST">
+<input type="text" name="NombreUsuario" placeholder="Usuario" required/>
+<input type="password" name="Contraseña" placeholder="Contraseña" required/>
+<input type="text" name="Nombre" placeholder="nombre" required/>
+<input type="text" name="Apellido" placeholder="apellido" required/>
+<select name="Tipo"> Tipo de usuario
+    <option value="1">Alumno</option>
+    <option value="2">Docente</option>
+    <option value="3">Coordinador</option>
+    <option value="4">Padre</option>
+</select>
+<input type="submit" value="guardar"/>
+</form>
