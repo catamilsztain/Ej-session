@@ -23,13 +23,23 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Ingreso()
+    public IActionResult Ingreso(string NombreUsuario, string Contraseña)
     {
-        
+        HttpContext.Session.SetString("usuario", NombreUsuario);
+        return View("Bienvenida");
+    }
+
+    public IActionResult Verificación(string NombreUsuario, string Contraseña, string Nombre, string Apellido, string Tipo)
+    {
+        Usuario usuario1 = new Usuario(NombreUsuario, Contraseña, Nombre, Apellido, Tipo);
+        BD.AgregarUsuario(usuario1);
         return View();
     }
 
-
+    public IActionResult Cierre(){
+        HttpContext.Session.Clear();
+        return View("Index");
+    }
 
     public IActionResult Privacy()
     {
