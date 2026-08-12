@@ -1,6 +1,7 @@
 <form action = '@Url.Action("Ingreso","Home")' method = "POST">
-<input type="text" name="NombreUsuario" required/>
-<input type="password" name="Contraseña" required/>
+<input type="text" name="NombreUsuario" placeholder="Usuario" required/>
+<input type="password" name="Contraseña" placeholder="Contraseña" required/>
+<input type="submit" value="guardar"/>
 </form>
 <form action = '@Url.Action("Registrarse","Home")' method = "POST">
 <button>Registrarse</button>

@@ -1,6 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Ej_session.Models;
+using Microsoft.Data.SqlClient;
+using Dapper;
 
 namespace Ej_session.Controllers;
 
@@ -15,6 +17,9 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        if(HttpContext.Session.GetString("usuario") != ""){
+            return View("Bienvenida");
+        }
         return View();
     }
 
@@ -32,8 +37,9 @@ public class HomeController : Controller
     public IActionResult Verificación(string NombreUsuario, string Contraseña, string Nombre, string Apellido, string Tipo)
     {
         Usuario usuario1 = new Usuario(NombreUsuario, Contraseña, Nombre, Apellido, Tipo);
-        BD.AgregarUsuario(usuario1);
-        return View();
+        BD bd = new BD();
+        bd.AgregarUsuario(usuario1);
+        return View("Index");
     }
 
     public IActionResult Cierre(){
