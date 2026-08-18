@@ -1,8 +1,17 @@
 <form action = '@Url.Action("Ingreso","Home")' method = "POST">
+@if (ViewBag.Error != null)
+{
+    <div style="color: red;">
+        @ViewBag.Error
+    </div>
+}
+
 <input type="text" name="NombreUsuario" placeholder="Usuario" required/>
 <input type="password" name="Contraseña" placeholder="Contraseña" required/>
 <input type="submit" value="guardar"/>
 </form>
+
+
 <form action = '@Url.Action("Registrarse","Home")' method = "POST">
 <button>Registrarse</button>
 </form>

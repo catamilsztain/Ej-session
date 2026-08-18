@@ -17,7 +17,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        if(HttpContext.Session.GetString("usuario") != ""){
+        if(HttpContext.Session.GetString("usuario") != null){
             return View("Bienvenida");
         }
         return View();
@@ -30,17 +30,34 @@ public class HomeController : Controller
 
     public IActionResult Ingreso(string NombreUsuario, string Contraseña)
     {
+    BD bd = new BD();
+
+    if (bd.LoginCorrecto(NombreUsuario, Contraseña))
+    {
         HttpContext.Session.SetString("usuario", NombreUsuario);
         return View("Bienvenida");
     }
 
-    public IActionResult Verificación(string NombreUsuario, string Contraseña, string Nombre, string Apellido, string Tipo)
-    {
-        Usuario usuario1 = new Usuario(NombreUsuario, Contraseña, Nombre, Apellido, Tipo);
-        BD bd = new BD();
-        bd.AgregarUsuario(usuario1);
-        return View("Index");
+    ViewBag.Error = "El usuario o la contraseña son incorrectos.";
+    return View("Index");
     }
+
+    public IActionResult Verificación(string NombreUsuario, string Contraseña, string Nombre, string Apellido, string Tipo)
+{
+    BD bd = new BD();
+
+    if (bd.ExisteUsuario(NombreUsuario))
+    {
+        ViewBag.Error = "Ese nombre de usuario ya está siendo utilizado.";
+        return View("Registrarse");
+    }
+
+    Usuario usuario1 = new Usuario(NombreUsuario, Contraseña, Nombre, Apellido, Tipo);
+
+    bd.AgregarUsuario(usuario1);
+
+    return View("Index");
+}
 
     public IActionResult Cierre(){
         HttpContext.Session.Clear();

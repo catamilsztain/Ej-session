@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ej-session")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ddaf33345c15f505b7df65dd918aa5923ff011a9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b71b2332ab7a322898cc113ad61c5dee6df4ae8c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ej-session")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ej-session")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
