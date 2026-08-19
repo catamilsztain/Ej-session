@@ -2,32 +2,33 @@
     ViewData["Title"] = "Registrarse";
 }
 
-<form id="formRegistro" action='@Url.Action("Verificación","Home")' method="POST">
+<div class="panel-principal">
+    <h1>Registrarse</h1>
 
-    @if (ViewBag.Error != null)
-{
-    <div style="color: #b00020; margin-bottom:10px;">
-        @ViewBag.Error
-    </div>
-}
+    <form id="formularioRegistro" action='@Url.Action("Verificación","Home")' method="POST" class="pila-formulario">
 
-    <div id="register-errors" style="color: red;"></div>
+        @if (ViewBag.Error != null)
+        {
+            <div class="alerta">
+                @ViewBag.Error
+            </div>
+        }
 
-    <input id="NombreUsuario" type="text" name="NombreUsuario" placeholder="Usuario" />
+        <div id="erroresRegistro" class="errores-validacion" style="display:none;"></div>
 
-    <input id="Contrasena" type="password" name="Contraseña" placeholder="Contraseña" />
+        <input id="NombreUsuario" class="campo" type="text" name="NombreUsuario" placeholder="Usuario" />
+        <input id="Contrasena" class="campo" type="password" name="Contraseña" placeholder="Contraseña" />
+        <input id="ClaveSeguridad" class="campo" type="text" name="ClaveSeguridad" placeholder="Clave de seguridad" />
+        <input id="Nombre" class="campo" type="text" name="Nombre" placeholder="Nombre" />
+        <input id="Apellido" class="campo" type="text" name="Apellido" placeholder="Apellido" />
 
-    <input id="Nombre" type="text" name="Nombre" placeholder="Nombre" />
+        <select name="Tipo" class="campo">
+            <option value="Alumno">Alumno</option>
+            <option value="Docente">Docente</option>
+            <option value="Coordinador">Coordinador</option>
+            <option value="Padre">Padre</option>
+        </select>
 
-    <input id="Apellido" type="text" name="Apellido" placeholder="Apellido" />
-
-    <select name="Tipo">
-        <option value="1">Alumno</option>
-        <option value="2">Docente</option>
-        <option value="3">Coordinador</option>
-        <option value="4">Padre</option>
-    </select>
-
-    <input type="submit" value="Guardar" />
-
-</form>
+        <button class="boton boton-principal" type="submit">Guardar</button>
+    </form>
+</div>

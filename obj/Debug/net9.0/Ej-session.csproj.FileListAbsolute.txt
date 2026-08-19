@@ -66,7 +66,6 @@ Z:\2026\prog\Ej-session\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
 Z:\2026\prog\Ej-session\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 Z:\2026\prog\Ej-session\obj\Debug\net9.0\scopedcss\bundle\Ej-session.styles.css
 Z:\2026\prog\Ej-session\obj\Debug\net9.0\scopedcss\projectbundle\Ej-session.bundle.scp.css
-Z:\2026\prog\Ej-session\obj\Debug\net9.0\compressed\x4ae9ls95i-b9sayid5wm.gz
 Z:\2026\prog\Ej-session\obj\Debug\net9.0\compressed\bilk21oblq-61n19gt1b8.gz
 Z:\2026\prog\Ej-session\obj\Debug\net9.0\compressed\9k2qri6w61-bqjiyaj88i.gz
 Z:\2026\prog\Ej-session\obj\Debug\net9.0\compressed\2xu5li2y6a-c2jlpeoesf.gz
@@ -139,4 +138,5 @@ Z:\2026\prog\Ej-session\obj\Debug\net9.0\refint\Ej-session.dll
 Z:\2026\prog\Ej-session\obj\Debug\net9.0\Ej-session.pdb
 Z:\2026\prog\Ej-session\obj\Debug\net9.0\Ej-session.genruntimeconfig.cache
 Z:\2026\prog\Ej-session\obj\Debug\net9.0\ref\Ej-session.dll
-Z:\2026\prog\Ej-session\obj\Debug\net9.0\compressed\zrdb5vanac-slhazefy00.gz
+Z:\2026\prog\Ej-session\obj\Debug\net9.0\compressed\x4ae9ls95i-bdlwid4acw.gz
+Z:\2026\prog\Ej-session\obj\Debug\net9.0\compressed\zrdb5vanac-ct8753u72l.gz

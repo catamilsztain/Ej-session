@@ -4,12 +4,16 @@ public class Usuario{
     public string Nombre {get;set;}
     public string Apellido {get;set;}
     public string Tipo {get;set;}
+    public string ClaveSeguridad {get;set;}
 
-    public Usuario(string usuario, string contra, string nombre, string apellido, string tipo){
-        NombreUsuario = usuario;
-        Contraseña = contra;
+    public Usuario(){}
+
+    public Usuario(string nombreUsuario, string contraseña, string nombre, string apellido, string tipo, string claveSeguridad){
+        NombreUsuario = nombreUsuario;
+        Contraseña = contraseña;
         Nombre = nombre;
         Apellido = apellido;
         Tipo = tipo;
+        ClaveSeguridad = claveSeguridad;
     }
 }

@@ -1,17 +1,37 @@
-<form action = '@Url.Action("Ingreso","Home")' method = "POST">
-@if (ViewBag.Error != null)
-{
-    <div style="color: red;">
-        @ViewBag.Error
+<div class="contenedor-acceso">
+    <h1>Iniciar sesión</h1>
+
+    <form action='@Url.Action("Ingreso","Home")' method="POST" class="pila-formulario">
+        @if (ViewBag.Error != null)
+        {
+            <div class="alerta">
+                @ViewBag.Error
+            </div>
+        }
+
+        <input class="campo" type="text" name="NombreUsuario" placeholder="Usuario" required />
+        <input class="campo" type="password" name="Contraseña" placeholder="Contraseña" required />
+        <div class="acciones-formulario">
+            <button class="boton boton-principal" type="submit">Ingresar</button>
+        </div>
+    </form>
+
+    <p class="texto-inline">¿Olvidaste tu contraseña?</p>
+    <div class="acciones-formulario" style="justify-content:center;">
+        <button class="boton boton-secundario" type="button" onclick="document.getElementById('recuperarClave').style.display = 'block';">Recuperar</button>
     </div>
-}
 
-<input type="text" name="NombreUsuario" placeholder="Usuario" required/>
-<input type="password" name="Contraseña" placeholder="Contraseña" required/>
-<input type="submit" value="guardar"/>
-</form>
+    <div id="recuperarClave" class="fila-oculta">
+        <form action='@Url.Action("IngresoConClave","Home")' method="POST" class="pila-formulario">
+            <input class="campo" type="text" name="NombreUsuario" placeholder="Usuario" required />
+            <input class="campo" type="text" name="ClaveSeguridad" placeholder="Clave de seguridad" required />
+            <button class="boton boton-principal" type="submit">Ingresar con clave</button>
+        </form>
+    </div>
 
-
-<form action = '@Url.Action("Registrarse","Home")' method = "POST">
-<button>Registrarse</button>
-</form>
+    <div class="acciones-formulario" style="justify-content:center; margin-top:1.2rem;">
+        <form action='@Url.Action("Registrarse","Home")' method="POST">
+            <button class="boton boton-enlace" type="submit">Crear cuenta</button>
+        </form>
+    </div>
+</div>

@@ -4,7 +4,7 @@ const PASSWORD_MIN = 6;
 const NAME_REGEX = /^[A-Za-zÀ-ÖØ-öø-ÿ' \-]+$/;
 
 document.addEventListener('DOMContentLoaded', () => {
-	const form = document.querySelector('form');
+	const form = document.getElementById('formularioRegistro');
 	if (!form) return;
 
 	form.addEventListener('submit', (e) => {
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (!apellido) errors.push('El campo Apellido es obligatorio.');
 		else if (!NAME_REGEX.test(apellido)) errors.push('El Apellido contiene caracteres no válidos.');
 
-		const errorContainer = form.querySelector('#register-errors') || createErrorContainer();
+		const errorContainer = form.querySelector('#erroresRegistro') || createErrorContainer();
 
 		if (errors.length) {
 			e.preventDefault();
@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function createErrorContainer() {
 		const div = document.createElement('div');
-		div.id = 'register-errors';
-		div.className = 'validation-errors';
+		div.id = 'erroresRegistro';
+		div.className = 'errores-validacion';
 		div.style.color = '#b00020';
 		div.style.marginBottom = '10px';
 		form.insertBefore(div, form.firstChild);
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	function escapeHtml(str) {
 		return str.replace(/[&<>\"']/g, function (c) {
-			return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[c];
+			return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c];
 		});
 	}
 });

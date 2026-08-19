@@ -18,8 +18,30 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         if(HttpContext.Session.GetString("usuario") != null){
-            return View("Bienvenida");
+            return Bienvenida();
         }
+        return View();
+    }
+
+    public IActionResult Bienvenida()
+    {
+        string? nombreUsuario = HttpContext.Session.GetString("usuario");
+
+        if (string.IsNullOrWhiteSpace(nombreUsuario))
+        {
+            return RedirectToAction("Index");
+        }
+
+        BD bd = new BD();
+        Usuario? usuario = bd.ObtenerUsuario(nombreUsuario);
+
+        if (usuario == null)
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index");
+        }
+
+        ViewBag.Usuario = usuario;
         return View();
     }
 
@@ -30,19 +52,33 @@ public class HomeController : Controller
 
     public IActionResult Ingreso(string NombreUsuario, string Contraseña)
     {
-    BD bd = new BD();
+        BD bd = new BD();
 
-    if (bd.LoginCorrecto(NombreUsuario, Contraseña))
+        if (bd.LoginCorrecto(NombreUsuario, Contraseña))
+        {
+            HttpContext.Session.SetString("usuario", NombreUsuario);
+            return RedirectToAction("Bienvenida");
+        }
+
+        ViewBag.Error = "El usuario o la contraseña son incorrectos.";
+        return View("Index");
+    }
+
+    public IActionResult IngresoConClave(string NombreUsuario, string ClaveSeguridad)
     {
-        HttpContext.Session.SetString("usuario", NombreUsuario);
-        return View("Bienvenida");
+        BD bd = new BD();
+
+        if (bd.LoginConClaveCorrecta(NombreUsuario, ClaveSeguridad))
+        {
+            HttpContext.Session.SetString("usuario", NombreUsuario);
+            return RedirectToAction("Bienvenida");
+        }
+
+        ViewBag.Error = "La clave de seguridad es incorrecta.";
+        return View("Index");
     }
 
-    ViewBag.Error = "El usuario o la contraseña son incorrectos.";
-    return View("Index");
-    }
-
-    public IActionResult Verificación(string NombreUsuario, string Contraseña, string Nombre, string Apellido, string Tipo)
+    public IActionResult Verificación(string NombreUsuario, string Contraseña, string Nombre, string Apellido, string Tipo, string ClaveSeguridad)
 {
     BD bd = new BD();
 
@@ -52,7 +88,7 @@ public class HomeController : Controller
         return View("Registrarse");
     }
 
-    Usuario usuario1 = new Usuario(NombreUsuario, Contraseña, Nombre, Apellido, Tipo);
+    Usuario usuario1 = new Usuario(NombreUsuario, Contraseña, Nombre, Apellido, Tipo, ClaveSeguridad);
 
     bd.AgregarUsuario(usuario1);
 
@@ -61,7 +97,7 @@ public class HomeController : Controller
 
     public IActionResult Cierre(){
         HttpContext.Session.Clear();
-        return View("Index");
+        return RedirectToAction("Index");
     }
 
     public IActionResult Privacy()

@@ -1,5 +1,27 @@
-<h1>BIENVENIDO</h1>
+@{
+    ViewData["Title"] = "Bienvenida";
+}
 
-<form action = '@Url.Action("Cierre","Home")' method = "POST">
-<button>Cerrar Session</button>
-</form>
+<div class="panel-principal">
+    <h1>Bienvenido</h1>
+
+    @if (ViewBag.Usuario != null)
+    {
+        <div class="tarjeta-usuario">
+            <p><strong>Usuario:</strong> @ViewBag.Usuario.NombreUsuario</p>
+            <p><strong>Nombre:</strong> @ViewBag.Usuario.Nombre</p>
+            <p><strong>Apellido:</strong> @ViewBag.Usuario.Apellido</p>
+            <p><strong>Tipo:</strong> @ViewBag.Usuario.Tipo</p>
+        </div>
+    }
+    else
+    {
+        <div class="alerta">No se encontró información del usuario.</div>
+    }
+
+    <div class="acciones-formulario" style="justify-content:center; margin-top:1.2rem;">
+        <form action='@Url.Action("Cierre", "Home")' method="POST">
+            <button class="boton boton-secundario" type="submit">Cerrar sesión</button>
+        </form>
+    </div>
+</div>
